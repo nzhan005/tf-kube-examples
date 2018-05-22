@@ -4,7 +4,7 @@ metadata:
   name: retrain-model
 spec:
   containers:
-  - name: tensorflow
+  - name: retrain
     image: 192.168.15.136:5000/retrain:latest
     volumeMounts:
     - name: model-data

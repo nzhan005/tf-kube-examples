@@ -4,7 +4,7 @@ metadata:
   name: infer-model
 spec:
   containers:
-  - name: tensorflow
+  - name: infer
     image: 192.168.15.136:5000/infer:latest
     volumeMounts:
     - name: model-data
