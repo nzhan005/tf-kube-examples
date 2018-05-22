@@ -1,0 +1,17 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: retrain-volume
+  labels:
+    type: local
+spec:
+  volumeMode: Filesystem
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: /tmp/data/
+    type: Directory
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual

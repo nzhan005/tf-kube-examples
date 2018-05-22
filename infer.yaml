@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: infer-model
+spec:
+  containers:
+  - name: tensorflow
+    image: 192.168.15.136:5000/infer:latest
+    volumeMounts:
+    - name: model-data
+      mountPath: /data
+    command:
+    - "python3"
+    - "infer.py"
+    args:
+    - "--image=/data/images"
+    - "--graph=/data/retrained_graph.pb"
+    - "--labels=/data/retrained_labels.txt"
+  volumes:
+  - name: model-data
+    persistentVolumeClaim:
+      claimName: retrain-claim
+  restartPolicy: Never

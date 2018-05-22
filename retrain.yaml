@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: retrain-model
+spec:
+  containers:
+  - name: tensorflow
+    image: 192.168.15.136:5000/retrain:latest
+    volumeMounts:
+    - name: model-data
+      mountPath: /data
+    command:
+    - "python3"
+    - "retrain.py"
+    args:
+    - "--bottleneck_dir=/data/bottlenecks"
+    - "--how_many_training_steps=500"
+    - "--tfhub_module=/data/inception"
+    - "--summaries_dir=/data/training_summaries/basic"
+    - "--output_graph=/data/retrained_graph.pb"
+    - "--output_labels=/data/retrained_labels.txt"
+    - "--image_dir=/data/flower_photos"
+    - "--saved_model_dir=/data/model"
+  volumes:
+  - name: model-data
+    persistentVolumeClaim:
+      claimName: retrain-claim
+  restartPolicy: Never
