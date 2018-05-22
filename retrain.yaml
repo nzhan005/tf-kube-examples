@@ -10,7 +10,7 @@ spec:
     - name: model-data
       mountPath: /data
     command:
-    - "python3"
+    - "python"
     - "retrain.py"
     args:
     - "--bottleneck_dir=/data/bottlenecks"

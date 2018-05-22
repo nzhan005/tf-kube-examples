@@ -31,7 +31,7 @@ sudo ./kube.sh master
 sudo ./kube.sh node
 
 # Configure kubectl & network & dashboard (master only)
-# Record the output token from token file for logging into dashboard.
+# Use the output token from token file for logging into dashboard.
 sudo ./kube.sh conf
 
 # Shutdown cluster & clean (master only)

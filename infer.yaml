@@ -10,7 +10,7 @@ spec:
     - name: model-data
       mountPath: /data
     command:
-    - "python3"
+    - "python"
     - "infer.py"
     args:
     - "--image=/data/images"
